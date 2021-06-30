@@ -1,0 +1,53 @@
+How to create project
+
+1. Create new folder
+mkdir WeatherForecastAPI
+
+2. Create solution file
+dotnet new sln
+
+3. Create new .NET webAPI project
+dotnet new webapi -n API
+
+4. Create Classlib
+dotnet new classlib -n Application
+dotnet new classlib -n Doamin
+dotnet new classlib -n Persistence
+
+5. Add projects into a solution (in WeatherForecatAPI folder)
+dotnet sln add API/API.csproj
+dotnet sln add Application
+dotnet sln add Peristence
+dotnet sln add Domain
+
+Check solution list
+dotnet sln list
+
+6. Setup dependencies between different projects
+cd API
+dotnet add reference ../Application
+cd ..
+
+cd Application
+dotnet add reference ../Persistence
+dotnet add reference ../Domain
+cd ..
+
+cd Persistence
+dotnet add reference ../Domain
+cd ..
+code .
+
+
+When project is created intall packages:
+
+1. In Persistence:
+Install Microsoft.EntityFrameworkCore
+Install Microsoft.EntityFrameworkCore.Sqlite
+
+
+Create database:
+1. Install Microsoft.EntityFrameworkCore.Design in API
+2. Create migrations:
+dotnet ef migrations add InitialCreate -p  Persistence -s API
+Database will be updated after startup app
