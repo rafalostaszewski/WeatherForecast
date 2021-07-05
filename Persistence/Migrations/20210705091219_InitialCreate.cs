@@ -10,8 +10,9 @@ namespace Persistence.Migrations
                 name: "WeatherForecast",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    dbid = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    id = table.Column<int>(type: "INTEGER", nullable: false),
                     Base = table.Column<string>(type: "TEXT", nullable: true),
                     Visibility = table.Column<int>(type: "INTEGER", nullable: false),
                     Dt = table.Column<int>(type: "INTEGER", nullable: false),
@@ -20,7 +21,7 @@ namespace Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_WeatherForecast", x => x.Id);
+                    table.PrimaryKey("PK_WeatherForecast", x => x.dbid);
                 });
 
             migrationBuilder.CreateTable(
@@ -39,7 +40,7 @@ namespace Persistence.Migrations
                         name: "FK_Clouds_WeatherForecast_WeatherForecastId",
                         column: x => x.WeatherForecastId,
                         principalTable: "WeatherForecast",
-                        principalColumn: "Id",
+                        principalColumn: "dbid",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -60,7 +61,7 @@ namespace Persistence.Migrations
                         name: "FK_Coord_WeatherForecast_WeatherForecastId",
                         column: x => x.WeatherForecastId,
                         principalTable: "WeatherForecast",
-                        principalColumn: "Id",
+                        principalColumn: "dbid",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -87,7 +88,7 @@ namespace Persistence.Migrations
                         name: "FK_Main_WeatherForecast_WeatherForecastId",
                         column: x => x.WeatherForecastId,
                         principalTable: "WeatherForecast",
-                        principalColumn: "Id",
+                        principalColumn: "dbid",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -108,7 +109,7 @@ namespace Persistence.Migrations
                         name: "FK_Rain_WeatherForecast_WeatherForecastId",
                         column: x => x.WeatherForecastId,
                         principalTable: "WeatherForecast",
-                        principalColumn: "Id",
+                        principalColumn: "dbid",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -129,7 +130,7 @@ namespace Persistence.Migrations
                         name: "FK_Snow_WeatherForecast_WeatherForecastId",
                         column: x => x.WeatherForecastId,
                         principalTable: "WeatherForecast",
-                        principalColumn: "Id",
+                        principalColumn: "dbid",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -137,8 +138,9 @@ namespace Persistence.Migrations
                 name: "Sys",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    dbid = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    id = table.Column<int>(type: "INTEGER", nullable: false),
                     country = table.Column<string>(type: "TEXT", nullable: true),
                     sunrise = table.Column<int>(type: "INTEGER", nullable: false),
                     sunset = table.Column<int>(type: "INTEGER", nullable: false),
@@ -146,12 +148,12 @@ namespace Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Sys", x => x.Id);
+                    table.PrimaryKey("PK_Sys", x => x.dbid);
                     table.ForeignKey(
                         name: "FK_Sys_WeatherForecast_WeatherForecastId",
                         column: x => x.WeatherForecastId,
                         principalTable: "WeatherForecast",
-                        principalColumn: "Id",
+                        principalColumn: "dbid",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -159,7 +161,7 @@ namespace Persistence.Migrations
                 name: "Weather",
                 columns: table => new
                 {
-                    Dbid = table.Column<int>(type: "INTEGER", nullable: false)
+                    dbid = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     id = table.Column<int>(type: "INTEGER", nullable: false),
                     main = table.Column<string>(type: "TEXT", nullable: true),
@@ -169,12 +171,12 @@ namespace Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Weather", x => x.Dbid);
+                    table.PrimaryKey("PK_Weather", x => x.dbid);
                     table.ForeignKey(
                         name: "FK_Weather_WeatherForecast_WeatherForecastId",
                         column: x => x.WeatherForecastId,
                         principalTable: "WeatherForecast",
-                        principalColumn: "Id",
+                        principalColumn: "dbid",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -196,7 +198,7 @@ namespace Persistence.Migrations
                         name: "FK_Wind_WeatherForecast_WeatherForecastId",
                         column: x => x.WeatherForecastId,
                         principalTable: "WeatherForecast",
-                        principalColumn: "Id",
+                        principalColumn: "dbid",
                         onDelete: ReferentialAction.Cascade);
                 });
 

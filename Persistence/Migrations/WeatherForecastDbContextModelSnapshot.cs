@@ -147,7 +147,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Sys", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("dbid")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -157,13 +157,16 @@ namespace Persistence.Migrations
                     b.Property<string>("country")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("id")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("sunrise")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("sunset")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("Id");
+                    b.HasKey("dbid");
 
                     b.HasIndex("WeatherForecastId")
                         .IsUnique();
@@ -173,7 +176,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Weather", b =>
                 {
-                    b.Property<int>("Dbid")
+                    b.Property<int>("dbid")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -192,7 +195,7 @@ namespace Persistence.Migrations
                     b.Property<string>("main")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Dbid");
+                    b.HasKey("dbid");
 
                     b.HasIndex("WeatherForecastId");
 
@@ -201,7 +204,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.WeatherForecast", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("dbid")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -220,7 +223,10 @@ namespace Persistence.Migrations
                     b.Property<int>("Visibility")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("Id");
+                    b.Property<int>("id")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("dbid");
 
                     b.ToTable("WeatherForecast");
                 });
