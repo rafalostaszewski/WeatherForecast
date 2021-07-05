@@ -51,3 +51,4 @@ Create database:
 2. Create migrations:
 dotnet ef migrations add InitialCreate -p  Persistence -s API
 Database will be updated after startup app
+

@@ -4,21 +4,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Domain;
 using Persistence;
+using MediatR;
+using Application.Weather;
 
 namespace API.Controllers
 {
     public class WeatherForecastController : BaseApiController
     {
-        private readonly WeatherForecastDbContext _context;
-        public WeatherForecastController(WeatherForecastDbContext context)
+        [HttpGet("history")]
+        public async Task<ActionResult<List<WeatherForecast>>> GetWeatherForacastHistory()
         {
-            _context = context;
-        }
-
-        [HttpGet]
-        public async Task<ActionResult<List<WeatherForecast>>> GetWeatherForacast()
-        {
-            return await _context.WeatherForecast.ToListAsync();
+            return await Mediator.Send(new History.Query());
         }
     }
 }
