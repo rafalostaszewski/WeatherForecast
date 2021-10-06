@@ -5,6 +5,7 @@ namespace Application.Models
 {
     public class WeatherForecastDto
     {
+        public int dbid { get; set; }
         public int id { get; set; }
         public CoordDto coord { get; set; }
         public List<WeatherDto> weather { get; set; }

@@ -1,8 +1,11 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Domain
 {
     public class Wind
     {
-        public int Id { get; set; }
+        [Key]
+        public int dbid { get; set; }
         public double speed { get; set; }
         public int deg { get; set; }
         public double gust { get; set; }

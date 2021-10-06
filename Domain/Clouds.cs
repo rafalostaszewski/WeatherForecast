@@ -1,8 +1,11 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Domain
 {
     public class Clouds
     {
-        public int Id { get; set; }
+        [Key]
+        public int dbid { get; set; }
         public int all { get; set; }
 
         public int WeatherForecastId { get; set; }

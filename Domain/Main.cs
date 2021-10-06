@@ -1,8 +1,11 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Domain
 {
     public class Main
     {
-        public int Id { get; set; }
+        [Key]
+        public int dbid { get; set; }
         public double temp { get; set; }
         public double feels_like { get; set; }
         public double temp_min { get; set; }

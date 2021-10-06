@@ -8,7 +8,7 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(WeatherForecastDbContext))]
-    [Migration("20210705091219_InitialCreate")]
+    [Migration("20211005081457_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -19,7 +19,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Clouds", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("dbid")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -29,7 +29,7 @@ namespace Persistence.Migrations
                     b.Property<int>("all")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("Id");
+                    b.HasKey("dbid");
 
                     b.HasIndex("WeatherForecastId")
                         .IsUnique();
@@ -39,7 +39,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Coord", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("dbid")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -52,7 +52,7 @@ namespace Persistence.Migrations
                     b.Property<double>("lon")
                         .HasColumnType("REAL");
 
-                    b.HasKey("Id");
+                    b.HasKey("dbid");
 
                     b.HasIndex("WeatherForecastId")
                         .IsUnique();
@@ -62,7 +62,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Main", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("dbid")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -93,7 +93,7 @@ namespace Persistence.Migrations
                     b.Property<double>("temp_min")
                         .HasColumnType("REAL");
 
-                    b.HasKey("Id");
+                    b.HasKey("dbid");
 
                     b.HasIndex("WeatherForecastId")
                         .IsUnique();
@@ -103,7 +103,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Rain", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("dbid")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -116,7 +116,7 @@ namespace Persistence.Migrations
                     b.Property<int>("h3")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("Id");
+                    b.HasKey("dbid");
 
                     b.HasIndex("WeatherForecastId")
                         .IsUnique();
@@ -126,7 +126,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Snow", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("dbid")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -139,7 +139,7 @@ namespace Persistence.Migrations
                     b.Property<int>("h3")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("Id");
+                    b.HasKey("dbid");
 
                     b.HasIndex("WeatherForecastId")
                         .IsUnique();
@@ -235,7 +235,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Wind", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("dbid")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -251,7 +251,7 @@ namespace Persistence.Migrations
                     b.Property<double>("speed")
                         .HasColumnType("REAL");
 
-                    b.HasKey("Id");
+                    b.HasKey("dbid");
 
                     b.HasIndex("WeatherForecastId")
                         .IsUnique();

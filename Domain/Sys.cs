@@ -4,6 +4,8 @@ namespace Domain
 {
     public class Sys
     {
+        [Key]
+        public int dbid { get; set; }
         public int id { get; set; }
         public string country { get; set; }
         public int sunrise { get; set; }

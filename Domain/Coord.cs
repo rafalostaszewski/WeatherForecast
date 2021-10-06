@@ -1,8 +1,11 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Domain
 {
     public class Coord
     {
-        public int Id { get; set; }
+        [Key]
+        public int dbid { get; set; }
         public double lon { get; set; }
         public double lat { get; set; }
 

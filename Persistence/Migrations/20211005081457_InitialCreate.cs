@@ -28,14 +28,14 @@ namespace Persistence.Migrations
                 name: "Clouds",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    dbid = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     all = table.Column<int>(type: "INTEGER", nullable: false),
                     WeatherForecastId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Clouds", x => x.Id);
+                    table.PrimaryKey("PK_Clouds", x => x.dbid);
                     table.ForeignKey(
                         name: "FK_Clouds_WeatherForecast_WeatherForecastId",
                         column: x => x.WeatherForecastId,
@@ -48,7 +48,7 @@ namespace Persistence.Migrations
                 name: "Coord",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    dbid = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     lon = table.Column<double>(type: "REAL", nullable: false),
                     lat = table.Column<double>(type: "REAL", nullable: false),
@@ -56,7 +56,7 @@ namespace Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Coord", x => x.Id);
+                    table.PrimaryKey("PK_Coord", x => x.dbid);
                     table.ForeignKey(
                         name: "FK_Coord_WeatherForecast_WeatherForecastId",
                         column: x => x.WeatherForecastId,
@@ -69,7 +69,7 @@ namespace Persistence.Migrations
                 name: "Main",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    dbid = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     temp = table.Column<double>(type: "REAL", nullable: false),
                     feels_like = table.Column<double>(type: "REAL", nullable: false),
@@ -83,7 +83,7 @@ namespace Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Main", x => x.Id);
+                    table.PrimaryKey("PK_Main", x => x.dbid);
                     table.ForeignKey(
                         name: "FK_Main_WeatherForecast_WeatherForecastId",
                         column: x => x.WeatherForecastId,
@@ -96,7 +96,7 @@ namespace Persistence.Migrations
                 name: "Rain",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    dbid = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     h1 = table.Column<int>(type: "INTEGER", nullable: false),
                     h3 = table.Column<int>(type: "INTEGER", nullable: false),
@@ -104,7 +104,7 @@ namespace Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Rain", x => x.Id);
+                    table.PrimaryKey("PK_Rain", x => x.dbid);
                     table.ForeignKey(
                         name: "FK_Rain_WeatherForecast_WeatherForecastId",
                         column: x => x.WeatherForecastId,
@@ -117,7 +117,7 @@ namespace Persistence.Migrations
                 name: "Snow",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    dbid = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     h1 = table.Column<int>(type: "INTEGER", nullable: false),
                     h3 = table.Column<int>(type: "INTEGER", nullable: false),
@@ -125,7 +125,7 @@ namespace Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Snow", x => x.Id);
+                    table.PrimaryKey("PK_Snow", x => x.dbid);
                     table.ForeignKey(
                         name: "FK_Snow_WeatherForecast_WeatherForecastId",
                         column: x => x.WeatherForecastId,
@@ -184,7 +184,7 @@ namespace Persistence.Migrations
                 name: "Wind",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    dbid = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     speed = table.Column<double>(type: "REAL", nullable: false),
                     deg = table.Column<int>(type: "INTEGER", nullable: false),
@@ -193,7 +193,7 @@ namespace Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Wind", x => x.Id);
+                    table.PrimaryKey("PK_Wind", x => x.dbid);
                     table.ForeignKey(
                         name: "FK_Wind_WeatherForecast_WeatherForecastId",
                         column: x => x.WeatherForecastId,
