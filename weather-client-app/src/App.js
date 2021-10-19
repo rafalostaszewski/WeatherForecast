@@ -48,8 +48,8 @@ function App() {
             <ul>
               {weather.map(d => (
                 <li key={d.dbid}>
-                  {d.name}
                   {d.date}
+                  {d.name}
                 </li>
               ))}
             </ul>

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
@@ -34,6 +35,8 @@ namespace Application.ForecastHandler
                 using HttpClient client = new();
 
                 WeatherForecastDto weatherForecast = await client.GetFromJsonAsync<WeatherForecastDto>($"http://api.openweathermap.org/data/2.5/weather?q={request.City}&units=metric&appid=17d5e24a10f80fbe0ff096b025173ea4");
+
+                weatherForecast.date = DateTime.Now;
 
                 var result = _mapper.Map<WeatherForecast>(weatherForecast);
                 _context.WeatherForecast.Add(result);

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -8,6 +9,7 @@ namespace Domain
         [Key]
         public int dbid { get; set; }
         public int id { get; set; }
+        public DateTime Date { get; set; }
         public virtual Coord Coord { get; set; }
         public virtual List<Weather> Weather { get; set; }
         public string @Base { get; set; }

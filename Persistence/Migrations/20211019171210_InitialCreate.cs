@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Persistence.Migrations
 {
@@ -13,6 +14,7 @@ namespace Persistence.Migrations
                     dbid = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     id = table.Column<int>(type: "INTEGER", nullable: false),
+                    Date = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Base = table.Column<string>(type: "TEXT", nullable: true),
                     Visibility = table.Column<int>(type: "INTEGER", nullable: false),
                     Dt = table.Column<int>(type: "INTEGER", nullable: false),

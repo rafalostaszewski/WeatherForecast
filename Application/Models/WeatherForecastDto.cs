@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Domain;
 
@@ -7,6 +8,7 @@ namespace Application.Models
     {
         public int dbid { get; set; }
         public int id { get; set; }
+        public DateTime date { get; set; }
         public CoordDto coord { get; set; }
         public List<WeatherDto> weather { get; set; }
         public string @base { get; set; }
