@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 const api = {
-  base: "https://localhost:5001/api/weatherforecast/actual"
+  base: "https://localhost:5001/api/weatherforecast/history/all"
 }
 
 function App() {
   const [query, setQuery] = useState('');
-  const [weather, setWeather] = useState({});
+  const [weather, setWeather] = useState([]);
 
   const search = evt => {
     if (evt.key === "Enter"){
-      fetch(`${api.base}?city=${query}`)
+      fetch(`${api.base}`)
       .then(res => res.json())
       .then(result => {
           setWeather(result);
@@ -44,21 +44,41 @@ function App() {
             onKeyPress={search}
           />
         </div>
-        {(typeof weather.main != "undefined") ? (
           <div>
-            <div className="location-box">
-              <div className="location">{weather.name}, {weather.sys.country}</div>
-              <div className="date">{dateBuilder(new Date())}</div>
-            </div>
-            <div className="weather-box">
-              <div className="temp">{Math.round(weather.main.temp)}°C</div>
-              <div className="weather">{weather.weather[0].main}</div>
-            </div>
+            <ul>
+              {weather.map(d => (
+                <li key={d.dbid}>
+                  {d.name}
+                  {d.date}
+                </li>
+              ))}
+            </ul>
           </div>
-        ) : ('')}
       </main>
     </div>
   );
 }
 
 export default App;
+
+
+/*
+{(typeof weather.main != "undefined") ? (
+  <div>
+    <div className="location-box">
+      <div className="location">{weather.name}, {weather.sys.country}</div>
+      <div className="date">{dateBuilder(new Date())}</div>
+    </div>
+    <div className="weather-box">
+      <div className="temp">{Math.round(weather.main.temp)}°C</div>
+      <div className="weather">{weather.weather[0].main}</div>
+    </div>
+    <ul>
+      {weather.map((weatherforecast) => (
+        <li key={weather.dbid}>
+          {weather.name}
+        </li>
+      ))}
+    </ul>
+  </div>
+) : ('')} */
