@@ -1,21 +1,31 @@
 import React, { useState } from 'react';
 const api = {
-  base: "https://localhost:5001/api/weatherforecast/history/all"
+  base: "https://localhost:5001/api/weatherforecast",
+  actual: "/actual",
+  historyall: "/history/all"
 }
 
 function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState([]);
+  const [historyAll, setHistoryAll] = useState([]);
 
   const search = evt => {
     if (evt.key === "Enter"){
-      fetch(`${api.base}`)
+      fetch(`${api.base + api.actual}?city=${query}`)
       .then(res => res.json())
       .then(result => {
           setWeather(result);
           setQuery('');
           console.log(result);
-      });
+      })
+      fetch(`${api.base + api.historyall}`)
+        .then(res => res.json())
+        .then(result => {
+          setHistoryAll(result);
+          setQuery('');
+          console.log(result);
+      })
     }
   }
 
@@ -44,10 +54,24 @@ function App() {
             onKeyPress={search}
           />
         </div>
-          <div>
-            <ul>
-              {weather.map(d => (
-                <li key={d.dbid}>
+
+      {(typeof weather.main != "undefined") ? (
+        <div>
+          <div className="location-box">
+            <div className="location">{weather.name}, {weather.sys.country}</div>
+            <div className="date">{dateBuilder(new Date())}</div>
+          </div>
+          <div className="weather-box">
+            <div className="temp">{Math.round(weather.main.temp)}°C</div>
+            <div className="weather">{weather.weather[0].main}</div>
+          </div>
+        </div>
+      ) : ('')}
+          <div className="history-box">
+            <h3>History</h3>
+            <ul className="history-records">
+              {historyAll.map(d => (
+                <li className="history-record" key={d.dbid}>
                   {d.date}
                   {d.name}
                 </li>
@@ -62,23 +86,3 @@ function App() {
 export default App;
 
 
-/*
-{(typeof weather.main != "undefined") ? (
-  <div>
-    <div className="location-box">
-      <div className="location">{weather.name}, {weather.sys.country}</div>
-      <div className="date">{dateBuilder(new Date())}</div>
-    </div>
-    <div className="weather-box">
-      <div className="temp">{Math.round(weather.main.temp)}°C</div>
-      <div className="weather">{weather.weather[0].main}</div>
-    </div>
-    <ul>
-      {weather.map((weatherforecast) => (
-        <li key={weather.dbid}>
-          {weather.name}
-        </li>
-      ))}
-    </ul>
-  </div>
-) : ('')} */
