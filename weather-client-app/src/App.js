@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Moment from 'react-moment';
 const api = {
   base: "https://localhost:5001/api/weatherforecast",
   actual: "/actual",
@@ -29,18 +30,6 @@ function App() {
     }
   }
 
-  const dateBuilder = (d) => {
-    let months = ["January", "February", "March", "April", "May", "June", "Julay", "August", "Seprember", "October", "November", "December"];
-    let days = ["Sunday", "Monday", "Tuesday", "Wensday", "Thursday", "Friday", "Saturday"];
-
-    let day = days[d.getDay()];
-    let date = d.getDate();
-    let month = months[d.getMonth()];
-    let year = d.getFullYear();
-
-    return `${day} ${date} ${month} ${year}`
-  }
-
   return (
     <div className="app">
       <main>
@@ -59,7 +48,10 @@ function App() {
         <div>
           <div className="location-box">
             <div className="location">{weather.name}, {weather.sys.country}</div>
-            <div className="date">{dateBuilder(new Date())}</div>
+            <div className="date">
+              <Moment className="time" format="DD MMMM YYYY H:mm ">
+                {weather.date}
+              </Moment></div>
           </div>
           <div className="weather-box">
             <div className="temp">{Math.round(weather.main.temp)}°C</div>
@@ -73,8 +65,12 @@ function App() {
             <ul className="history-records">
               {historyAll.map(d => (
                 <li className="history-record" key={d.dbid}>
-                  {d.date}
-                  {d.name}
+                  <div className="history-city">{d.name}, {d.sys.country}</div>
+                  <div className="history-temp">{Math.round(d.main.temp)}°C</div>
+                  <div className="history-sky">{d.weather[0].main}</div>
+                  <Moment className="history-time" format="DD MMMM YYYY H:mm ">
+                    {d.date}
+                  </Moment>
                 </li>
               ))}
             </ul>
