@@ -67,6 +67,7 @@ function App() {
           </div>
         </div>
       ) : ('')}
+      {(typeof weather.main != "undefined") ? (
           <div className="history-box">
             <h3>History</h3>
             <ul className="history-records">
@@ -78,6 +79,7 @@ function App() {
               ))}
             </ul>
           </div>
+      ) : ('')}
       </main>
     </div>
   );
